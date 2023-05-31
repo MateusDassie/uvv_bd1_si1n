@@ -1,0 +1,49 @@
+1) Os sistemas de controle de versão são aplicativos de software que acompanham e gerenciam alterações em arquivos ao longo do tempo. Eles são significativos porque permitem que você acompanhe o histórico de mudanças, participe de projetos colaborativos com vários participantes, reverta os efeitos de mudanças problemáticas, crie ramificações independentes e trabalhe offline.
+
+2) O Git é um sistema de controle de versão distribuído que permite acompanhar as alterações nos arquivos. O GitHub, por sua vez, é uma plataforma online que hospeda projetos de software usando o Git.
+O Git é uma ferramenta que opera na linha de comando e destina-se a gerenciar o controle de versão localmente, enquanto o GitHub é um serviço da web que fornece uma única plataforma centralizada para armazenar repositórios Git, o que permite a colaboração entre desenvolvedores.
+Embora o Git possa ser usado independentemente do GitHub, o GitHub depende do Git para funcionar, pois é construído em cima do Git. É possível usar o Git sem o GitHub, mas o GitHub não pode ser usado sem o Git.
+
+3) Sistema de controle de versão distribuído significa que cada usuário possui uma cópia completa do repositório, incluindo todo o histórico de alterações. Isso permite que os usuários trabalhem offline, tenham mais flexibilidade e facilidade para colaborar em projetos, além de fornecer maior segurança e redundância de dados.
+
+4) Diretório de trabalho: É o local principal para trabalhar diretamente com os arquivos do seu projeto. Committed: Os arquivos são armazenados permanentemente no histórico de versões do repositório. Modified: As alterações nos arquivos foram feitas, mas ainda não estão prontas para serem confirmadas. Staged: As alterações selecionadas foram preparadas para serem confirmadas. Área de Staging: É onde você seleciona as modificações específicas que deseja incluir no próximo registro. Adicionar arquivos à área de staging: Você escolhe as modificações que deseja incluir utilizando o comando "git add". Repositório: É onde o histórico de versões do projeto é armazenado. Commit: As alterações selecionadas na área de preparação são confirmadas e armazenadas no repositório usando o comando "git commit". Os arquivos registrados são considerados "commited" e podem ser acessados a qualquer momento no futuro.
+
+5) A coluna envio_id na tabela pedidos_itens tem a possibilidade de ser nula, porém é necessário que seja obrigatória. Esse cenário acaba resultando em um erro devido às colunas com o mesmo nome, como é o caso da coluna "Nome" nas tabelas "clientes" e "loja". Além disso, há redundância de dados na tabela "lojas" onde armazenamos o mesmo dado duas vezes nas colunas "logo_mime_type" e "logo_arquivo".
+
+6) As tabelas que representam um relacionamento N:N são as tabelas "pedidos_itens" e “estoques”. Isso ocorre porque um pedido pode ter vários itens e um item pode estar presente em vários pedidos. O mesmo ocorre na tabela “estoques”, pois uma loja pode ter vários produtos e um produto pode estar presente em várias lojas. Portanto, é um relacionamento de muitos para muitos (N:N). Não foi mencionado na descrição do projeto nenhum outro relacionamento N:N. Se não houver relacionamentos N:N em um projeto específico, não é necessariamente um erro. Dependendo dos requisitos e do modelo de dados, pode não haver a necessidade de um relacionamento N:N.
+
+7) Não é errado ter a coluna "numero_da_linha" fora da PK composta na tabela "pedidos_itens", mas isso pode causar duplicação de linhas, dificultar atualizações complexas e afetar a integridade referencial do banco de dados. É recomendável que todas as colunas que identificam exclusivamente cada registro façam parte da PK para garantir a integridade dos dados.
+
+8) A tabela "pedidos_itens" faz relacionamentos identificados com as tabelas "pedidos" e "produtos" porque registra informações detalhadas sobre os itens dos pedidos. Ela tem um relacionamento não identificado com a tabela "envios" porque não contém informações diretas sobre os envios, mas pode estar relacionada a eles por meio de outras colunas nas tabelas.
+
+9) O relacionamento identificado é o único que armazena dados através de chaves estrangeiras. No projeto mencionado, a tabela "pedidos_itens" possui relacionamentos identificados com "pedidos" e "produtos". No entanto, não há um relacionamento identificado com a tabela "envios". Sugeriria adicionar esse relacionamento para melhorar o projeto, permitindo que os envios sejam associados aos itens de pedido correspondentes.
+
+10) O tipo de dado "BLOB" (Binary Large Object) é usado para armazenar dados binários de tamanho variável, como imagens, arquivos PDF, documentos de texto, etc. Sua utilização é adequada quando é necessário armazenar dados não estruturados de tamanho grande. No projeto, o uso de "BLOB" parece correto, considerando que as tabelas “lojas” e "produtos" possuem uma coluna “logo”,  "imagem" e “detalhes” que condizem com o que o tipo de dado “BLOB” é usado.
+
+11) No PostgreSQL:
+Banco de dados (database): É uma coleção de dados relacionados e seus objetos associados. Ele serve como um recipiente lógico e físico para armazenar dados.
+
+Usuário (user): É uma identidade que possui permissões e privilégios para acessar e manipular bancos de dados. Os usuários são criados e gerenciados pelo administrador do banco de dados e são usados para controlar o acesso e garantir a segurança dos dados.
+
+Esquema (schema): É uma coleção lógica de objetos dentro de um banco de dados. Ele permite organizar e segmentar os objetos do banco de dados, como tabelas, visões, funções, etc. O esquema é usado para evitar conflitos de nome e separar objetos pertencentes a diferentes aplicativos ou usuários dentro do mesmo banco de dados.
+Resumindo, o banco de dados é o recipiente para armazenar dados, o usuário é uma identidade que possui permissões e privilégios, e o esquema é uma coleção lógica de objetos dentro do banco de dados, usada para organização e separação de objetos.
+
+12) Um esquema na linguagem SQL é importante porque permite a organização dos objetos do banco de dados, evita conflitos de nome, facilita o controle de acesso e proporciona uma estrutura lógica e coerente para gerenciar o banco de dados.
+
+13) Se você não definir um esquema específico, os objetos do banco de dados serão gravados no esquema padrão do banco de dados. Isso pode ser bom ou ruim, dependendo do contexto e da organização do seu banco de dados. Definir um esquema pode ajudar na organização, prevenção de conflitos de nome e no controle de acesso aos objetos do banco de dados.
+
+14) A tabela "pedidos_itens" não possui um relacionamento identificado com a tabela "envios". Sugeriria adicionar esse relacionamento para melhorar o projeto, permitindo que os envios sejam associados aos itens de pedido correspondentes.
+
+15) Oracle:
+Vantagens: Robusto, escalável, confiável. Recursos avançados. Boa documentação oficial.
+Desvantagens: Licenciamento mais caro. Curva de aprendizado íngreme.
+
+MariaDB:
+Vantagens: Código aberto, bom desempenho, compatibilidade com MySQL. Documentação adequada.
+Desvantagens: Pode faltar recursos avançados do Oracle.
+
+PostgreSQL:
+Vantagens: Código aberto, confiável, recursos avançados. Boa documentação.
+Desvantagens: Possível desempenho inferior em certas cargas de trabalho.
+
+Em relação à documentação, tanto a Oracle quanto o PostgreSQL têm uma documentação abrangente e detalhada, sendo frequentemente elogiadas por sua qualidade. O MariaDB também possui uma documentação sólida, que cobre adequadamente a maioria dos aspectos do banco de dados.
