@@ -1,8 +1,8 @@
--- Comando para sair do usuário (mateus_dassie) se existir.
-DROP ROLE IF EXISTS mateus_dassie;
-
 -- Comando para sair do banco de dados (uvv) se existir.
 DROP DATABASE IF EXISTS uvv;
+
+-- Comando para sair do usuário (mateus_dassie) se existir.
+DROP ROLE IF EXISTS mateus_dassie;
 
 -- Comando para a criação de um usuário (mateus_dassie).
 CREATE USER mateus_dassie
@@ -15,7 +15,7 @@ TEMPLATE        template0
 ENCODING   'UTF8'
 LC_COLLATE 'pt_BR.UTF-8'
 LC_CTYPE   'pt_BR.UTF-8'
-allow_connections: TRUE;
+allow_connections TRUE;
  
 -- Comando para garantir todas as permissões no banco de dados para o usuário (mateus_dassie).
 GRANT ALL PRIVILEGES ON DATABASE uvv TO mateus_dassie;
@@ -26,10 +26,14 @@ GRANT ALL PRIVILEGES ON DATABASE uvv TO mateus_dassie;
 -- Comando para criar o schema (lojas) e autorização do usuário (mateus_dassie).
 CREATE SCHEMA lojas AUTHORIZATION mateus_dassie;
 
+-- Comando para habilitar o "SEARCH_PATH" para o schema (lojas) na sessão atual.
+SET SEARCH_PATH TO lojas, "$user", public;
+
 -- Comando para demonstrar o "SEARCH_PATH" que está sendo usado.
 SHOW SEARCH_PATH;
 
 -- Comando para habilitar o "SEARCH_PATH" para o schema (lojas).
+ALTER USER mateus_dassie
 SET SEARCH_PATH TO lojas, "$user", public;
 
 -- Comando para a criação da tabela (produtos) e a constante da chave primária da mesma (produto_id).
@@ -266,3 +270,6 @@ CHECK (status IN ('CRIADO', 'ENVIADO', 'TRANSITO', 'ENTREGUE'));
 ALTER TABLE lojas
 ADD CONSTRAINT check_endereco_lojas
 CHECK ((endereco_web IS NOT NULL) OR (endereco_fisico IS NOT NULL));
+
+-- Comando para a remoção do schema "public" do usuário do postgres;
+DROP SCHEMA public;
